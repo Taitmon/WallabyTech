@@ -18,10 +18,9 @@ public class Main
         int birthYear = input.nextInt();
         printAge(birthYear);
 
-        System.out.println("Please pick a number from one through ten and enter that number.");
+        System.out.println("Please enter a number.");
         int employeeNumber = input.nextInt();
         printEvenOrOdd(employeeNumber);
-
 
         printGeneratedSecretPassword(employeeNumber);
 
@@ -64,25 +63,26 @@ public class Main
         System.out.println("------------------------------------------------");
     }
 
-    //ToDo The method below works half way, I need to go back and rewrite it.
+    //Fixed
     private static void printGeneratedSecretPassword(int employeeNumber)
     {
         int max = 10;
         int min = 1;
-        boolean range;
         int secretNumber;
-        do
+
+        java.util.Random random = new java.util.Random();
+        int randomNum = random.nextInt(max);
+
+        if (randomNum >= min && randomNum <= max)
         {
-            java.util.Random random = new java.util.Random();
-            int randomRange = random.nextInt(max);
-
-            secretNumber = ((employeeNumber + randomRange) * 5);
-            range =(secretNumber <= max && secretNumber >= min);
-        }while (range);
-
+           secretNumber = (randomNum + employeeNumber) * 5;
 
             System.out.println("Your secret password is: " + secretNumber + "!!!");
             System.out.println("=================================================");
+        }
+
+
+
 
     }
 
